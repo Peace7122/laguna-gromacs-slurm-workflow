@@ -398,6 +398,10 @@ gmx_mpi mdrun \
     -append
 ```
 
+This command resumes an interrupted simulation toward the endpoint already encoded in the existing `.tpr`. It does **not** automatically extend the simulation beyond the end time defined in that run input.
+
+If the intended simulation length itself needs to be extended, prepare an appropriately extended run input before restarting. Do not assume that `-cpi` alone changes the planned simulation duration.
+
 Only continue when the checkpoint is valid and continuation is appropriate.
 
 ## 20. Sequential stages
@@ -444,7 +448,15 @@ A CHARMM-GUI preparation problem is not a SLURM problem.
 
 A GROMACS simulation instability is not automatically a scheduler problem.
 
-## 23. Reproducibility
+## 23. Working SLURM example
+
+A real production script used successfully for a previous Ray Lab GROMACS MD project on Laguna is available at:
+
+`slurm/examples/md_300ns_array_example.sh`
+
+Read `slurm/examples/README.md` first. The script demonstrates a working job structure, not a universal resource prescription. Its GPU type, CPU count, memory, wall time, array size, filenames, directory layout, and GROMACS options were specific to that project.
+
+## 24. Reproducibility
 
 For each production simulation, record:
 - system name

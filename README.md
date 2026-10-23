@@ -31,7 +31,10 @@ laguna-gromacs-slurm-workflow/
 │   └── PROTOCOL.md
 ├── slurm/
 │   ├── 00_slurm_test.sh
-│   └── 10_gromacs_template.sh
+│   ├── 10_gromacs_template.sh
+│   └── examples/
+│       ├── README.md
+│       └── md_300ns_array_example.sh
 ├── charmm_gui/
 │   └── README.md
 ├── troubleshooting/
@@ -45,10 +48,12 @@ Do not run long GROMACS simulations directly on a Laguna login node.
 
 Cluster modules, partitions, GPU types, CPU counts, memory requests, and wall-time limits can change. Verify the current Laguna configuration before production runs.
 
-## Example SLURM Script
+## Real SLURM Example From a Completed Project
 
-A real production SLURM script previously used successfully on Laguna is included at:
+In addition to the reusable template, this repository includes a real production SLURM script that was used successfully for a previous Ray Lab GROMACS MD project on Laguna:
 
 `slurm/examples/md_300ns_array_example.sh`
 
-See `slurm/examples/README.md` for an explanation of the resource requests, job array, and GROMACS command.
+This example shows how a working Laguna production job was structured in practice, including GPU allocation, CPU and memory requests, a three-replicate SLURM job array, module loading, log naming, and the `gmx_mpi mdrun` command.
+
+**Start with `slurm/examples/README.md` before copying the script.** The example preserves project-specific filenames, replicate directories, resource requests, and comments from the original run, so it should be adapted rather than used unchanged for a different molecular system.

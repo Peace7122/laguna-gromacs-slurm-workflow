@@ -33,6 +33,23 @@ and runs:
 gmx_mpi mdrun -s md.tpr -deffnm md_300ns -ntomp $OMP_NUM_THREADS -gpu_id 0
 ```
 
+## Before submitting this example
+
+The script writes SLURM standard output and error files into a `logs/` directory:
+
+```bash
+#SBATCH --output=logs/md_300ns_reps_%A_%a.out
+#SBATCH --error=logs/md_300ns_reps_%A_%a.err
+```
+
+Create that directory before submission:
+
+```bash
+mkdir -p logs
+```
+
+The example script is preserved from the original project workflow. Comments referring to numbered steps, filenames such as `md.tpr`, replicate directories such as `rep1/`, `rep2/`, and `rep3/`, and the 300-ns duration are project-specific and should not be interpreted as universal instructions.
+
 ## Important
 
 This script is provided as a working example of SLURM structure, GPU-resource requests, job arrays, module loading, logging, and GROMACS execution on Laguna.
