@@ -1,0 +1,19 @@
+# Large GROMACS outputs
+*.xtc
+*.trr
+*.edr
+*.cpt
+*.tpr
+
+# SLURM logs
+*.out
+*.err
+
+# Temporary/editor files
+*~
+*.swp
+.DS_Store
+
+# Raw data directories
+data/
+trajectories/
