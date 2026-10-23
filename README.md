@@ -44,3 +44,11 @@ laguna-gromacs-slurm-workflow/
 Do not run long GROMACS simulations directly on a Laguna login node.
 
 Cluster modules, partitions, GPU types, CPU counts, memory requests, and wall-time limits can change. Verify the current Laguna configuration before production runs.
+
+## Example SLURM Script
+
+A real production SLURM script previously used successfully on Laguna is included at:
+
+`slurm/examples/md_300ns_array_example.sh`
+
+See `slurm/examples/README.md` for an explanation of the resource requests, job array, and GROMACS command.
